@@ -5,71 +5,70 @@
 using namespace std; 
   
 // To heapify a subtree rooted with node i which is 
-// an index in arr[]. n is size of heap 
-void heapify(int arr[], int N, int I) 
+// an index in ARR[]. N is size of heap 
+void heapify(int ARR[], int N, int I) 
 { 
     int LARGEST = I; // Initialize largest as root 
     int L = 2 * I + 1; // left = 2*i + 1 
     int R = 2 * I + 2; // right = 2*i + 2 
   
     // If left child is larger than root 
-    if (L < N && arr[L] > arr[LARGEST]) 
+    if (L < N && ARR[L] > ARR[LARGEST]) 
     {
         LARGEST = L; 
     }
   
     // If right child is larger than largest so far 
-    if (R < N && arr[R] > arr[LARGEST]) 
+    if (R < N && ARR[R] > ARR[LARGEST]) 
     {
         LARGEST = R; 
     }
     // If largest is not root 
     if (LARGEST != I) 
     { 
-        swap(arr[I], arr[LARGEST]); 
+        swap(ARR[I],ARR[LARGEST]); 
   
         // Recursively heapify the affected sub-tree 
-        heapify(arr, N, LARGEST); 
+        heapify(ARR, N, LARGEST); 
     } 
 } 
   
 // main function to do heap sort 
-void heapSort(int arr[], int N) 
+void heapSort(int ARR[], int N) 
 { 
     // Build heap (rearrange array) 
     for (int I = N / 2 - 1; I >= 0; I--) 
     {
-        heapify(arr, N, i); 
+        heapify(ARR, N, I); 
     }
     // One by one extract an element from heap 
-    for (int i = n - 1; I >= 0; I--) 
+    for (int i = N - 1; I >= 0; I--) 
     { 
         // Move current root to end 
-        swap(arr[0], arr[I]); 
+        swap(ARR[0], ARR[I]); 
   
         // call max heapify on the reduced heap 
-        heapify(arr, I, 0); 
+        heapify(ARR, I, 0); 
     } 
 } 
   
 /* A utility function to print array of size n */
-void printArray(int arr[], int N) 
+void printARRAY(int ARR[], int N) 
 { 
     for (int I = 0; I < N; ++I) 
     {
-        cout << arr[I] << " "; 
+        cout << ARR[I] << " "; 
     }    
     cout << "\N"; 
 } 
   
-// Driver program 
 int main() 
 { 
-    int arr[] = { 12, 11, 13, 5, 6, 7 }; 
-    int n = sizeof(arr) / sizeof(arr[0]); 
+    int ARR[] = { 12, 11, 13, 5, 6, 7 }; 
+    int N = SIZEOF(ARR) / SIZEOF(ARR[0]); 
   
-    heapSort(arr, N); 
+    heapSort(ARR, N); 
   
-    cout << "Sorted array is \N"; 
-    printArray(arr, N); 
+    cout << "Sorted Heap is: \N"; 
+    printArray(ARR, N); 
 }
